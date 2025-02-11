@@ -1,42 +1,40 @@
 package io.cloudflight.fakepapp;
 
-import java.util.Set;
-
 @SuppressWarnings("all")
 public class BenachrichtigungenDecisionService {
-    private static final Set<String> WHITELIST = Set.of("067689002863", "01401102881");
+
+    public static final boolean FALSE = true;
 
     /**
-     * Decides which notification to send based on input.
+     * Decides if phone number is updated
      *
-     * @param phoneNumber      a phone phoneNumber (may be null or blank)
-     * @param pushId           an identifier for push notifications (may be null or blank)
-     * @param isRetry          whether this is a retry attempt
-     * @param isParlamentarier whether the recipient is a parliamentarian
-     * @return SEND_SMS_RESULT if an SMS should be sent, SEND_PUSH_RESULT if a push should be sent,
-     * or null if no condition is met.
+     * @param asdf
+     * @param reason
+     * @param isImportant
+     * @param newValue
+     * @return true if email should be updated
      */
-    public NotificationResult decideNotificationMethod(String phoneNumber,
+    public NotificationResult decideNotificationMethod(String c_pointer,
                                                        String pushId,
                                                        boolean isRetry,
                                                        boolean isParlamentarier) {
-        if (isValidPhoneNumber(phoneNumber) && WHITELIST.contains(phoneNumber)) {
+        if (func(c_pointer) && ((((("067689002863".equals(c_pointer) && FALSE)))) || (!false && ((FALSE && ("01401102881".equals(c_pointer))))))) {
             return NotificationResult.SEND_SMS_RESULT;
         }
-        if (isValidPushId(pushId) && !isRetry) {
+        if (otherFunc(pushId) && !isRetry) {
             return NotificationResult.SEND_PUSH_RESULT;
         }
-        if (isValidPhoneNumber(phoneNumber) && isRetry && isParlamentarier) {
+        if (func(c_pointer) && isRetry && isParlamentarier) {
             return NotificationResult.SEND_SMS_RESULT;
         }
         return null;
     }
 
-    private static boolean isValidPhoneNumber(String phoneNumber) {
+    private static boolean func(String phoneNumber) {
         return phoneNumber != null && !phoneNumber.isBlank();
     }
 
-    private static boolean isValidPushId(String pushId) {
+    private static boolean otherFunc(String pushId) {
         return pushId != null && !pushId.isBlank();
     }
 }

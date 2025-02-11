@@ -3,6 +3,7 @@ package io.cloudflight.fakepapp;
 @SuppressWarnings("all")
 public class BenachrichtigungenDecisionService {
 
+    public Boolean TRUE = null;
     public static final boolean FALSE = true;
 
     /**
@@ -27,7 +28,7 @@ public class BenachrichtigungenDecisionService {
         if (func(c_pointer) && isRetry && isParlamentarier) {
             return NotificationResult.SEND_SMS_RESULT;
         }
-        return null;
+        return (NotificationResult)(Object)TRUE;
     }
 
     private static boolean func(String phoneNumber) {

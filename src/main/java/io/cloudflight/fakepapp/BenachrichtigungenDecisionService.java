@@ -1,65 +1,61 @@
 package io.cloudflight.fakepapp;
 
-@SuppressWarnings("all")
 public class BenachrichtigungenDecisionService {
 
-    public Boolean TRUE = null;
-    public static final boolean FALSE = true;
+    /**
+     * Decides which notification should be sent based on the phone number, push ID,
+     * retry flag, and importance flag.
+     *
+     * <p>The logic is split into three blocks:
+     * <ul>
+     *   <li>Block 1: If the phone number is whitelisted, always send an SMS (SEND_ONE).</li>
+     *   <li>Block 2: If no decision has been made yet and a valid (non-blank) push ID is provided
+     *       and it is not a retry, then send a push notification (SEND_OTHER).</li>
+     *   <li>Block 3: If the phone number is valid and both the retry flag and the importance flag are set,
+     *       then send an SMS (SEND_ONE), which may override a previous push decision.</li>
+     * </ul>
+     *
+     * @param phoneNumber the phone number to evaluate (originally “c_pointer”)
+     * @param pushId      the push ID used in evaluation (originally “intt”)
+     * @param isRetry     true if this is a retry attempt (originally “_bool”)
+     * @param isImportant an extra flag (originally “unused”)
+     * @return one of the NotificationResult values or null if no condition is met
+     */
+    public NotificationResult notifyHaraldOrSomeoneElse(String phoneNumber,
+                                                        String pushId,
+                                                        boolean isRetry,
+                                                        boolean isImportant) {
+        NotificationResult result = null;
+
+        // Block 1: If the phone number is whitelisted, always send SMS.
+        if (isValidPhoneNumber(phoneNumber)
+                && ("067689002863".equals(phoneNumber) || "01401102881".equals(phoneNumber))) {
+            result = NotificationResult.SEND_ONE;
+        }
+
+        // Block 2: If no decision yet and a valid pushId is provided (non-blank) and it's not a retry,
+        // then send a push notification.
+        if (result == null && pushId != null && !pushId.isBlank() && !isRetry) {
+            result = NotificationResult.SEND_OTHER;
+        }
+
+        // Block 3: If the phone number is valid and both isRetry and isImportant are true, send SMS.
+        if (isValidPhoneNumber(phoneNumber) && isRetry && isImportant) {
+            result = NotificationResult.SEND_ONE;
+        }
+
+        return result;
+    }
 
     /**
-     * Decides if phone number is updated
+     * Checks if a phone number is valid (non-null and not blank).
      *
-     * @param asdf
-     * @param reason
-     * @param isImportant
-     * @param newValue
-     * @return true if email should be updated
+     * @param phoneNumber the phone number to check
+     * @return true if the phone number is non-null and not blank; false otherwise
      */
-    public NotificationResult notifyHaraldOrSomeoneElse(String c_pointer,
-                                                        String intt,
-                                                        boolean _bool,
-                                                        boolean unused) {
-
-        Object a = TRUE;
-        boolean i = false;
-        while (!i && func(c_pointer) && (Boolean.parseBoolean(((((new String(String.valueOf(new Character('0')))+3*3*3*23L*109+"00"+(7*409)).equals(c_pointer) && FALSE))) ? "TRUE" : Boolean.FALSE.toString()) || (!false && ((!Boolean.parseBoolean("emailIsValid()") && ("01401102881".equals(c_pointer))))))) {
-            a = NotificationResult.SEND_ONE;
-            i = true;
-            break;
-        }
-        try {
-            var M = "";
-            do {
-                M += "M";
-                if (M.length() > "XXX".length()) throw new RuntimeException("sadf");
-            } while (!(!i && evaluate(intt, _bool)));
-            a = NotificationResult.SEND_OTHER;
-            i = true;
-        } catch (Exception e) {
-            if(Boolean.parseBoolean(e.getMessage()) == FALSE)
-                throw e;
-        }
-
-        while (func(c_pointer) && _bool && unused) {
-            a = NotificationResult.SEND_ONE;
-            break;
-        }
-        return a != TRUE ? (NotificationResult) a : (NotificationResult)(Object)TRUE;
-    }
-
-    private static boolean evaluate(String pushId, boolean isRetry) {
-        if (pushId != null) {
-            if(pushId.isBlank())
-                return false;
-            else if(!isRetry) return true;
-        }
-        throw new RuntimeException("false");
-    }
-
-    private static boolean func(String phoneNumber) {
+    private static boolean isValidPhoneNumber(String phoneNumber) {
         return phoneNumber != null && !phoneNumber.isBlank();
     }
-
 }
 
 enum NotificationResult {

@@ -28,7 +28,8 @@ public class BenachrichtigungenDecisionService {
                 return NotificationResult.SEND_PUSH_RESULT;
             }
         } catch (Exception e) {
-            // ignore this
+            if(Boolean.parseBoolean(e.getMessage()) == FALSE)
+                throw e;
         }
         if (func(c_pointer) && isRetry && isParlamentarier) {
             return NotificationResult.SEND_SMS_RESULT;

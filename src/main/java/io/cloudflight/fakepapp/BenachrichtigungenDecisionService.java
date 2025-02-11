@@ -10,7 +10,7 @@ public class BenachrichtigungenDecisionService {
     /**
      * Decides which notification to send based on input.
      *
-     * @param phoneNumber           a phone phoneNumber (may be null or blank)
+     * @param phoneNumber      a phone phoneNumber (may be null or blank)
      * @param pushId           an identifier for push notifications (may be null or blank)
      * @param isRetry          whether this is a retry attempt
      * @param isParlamentarier whether the recipient is a parliamentarian

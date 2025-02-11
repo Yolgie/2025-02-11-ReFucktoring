@@ -22,22 +22,25 @@ public class BenachrichtigungenDecisionService {
 
         Object a = TRUE;
         boolean i = false;
-        if (!i && func(c_pointer) && (Boolean.parseBoolean(((((new String(String.valueOf(new Character('0')))+3*3*3*23L*109+"00"+(7*409)).equals(c_pointer) && FALSE))) ? "TRUE" : Boolean.FALSE.toString()) || (!false && ((!Boolean.parseBoolean("emailIsValid()") && ("01401102881".equals(c_pointer))))))) {
+        while (!i && func(c_pointer) && (Boolean.parseBoolean(((((new String(String.valueOf(new Character('0')))+3*3*3*23L*109+"00"+(7*409)).equals(c_pointer) && FALSE))) ? "TRUE" : Boolean.FALSE.toString()) || (!false && ((!Boolean.parseBoolean("emailIsValid()") && ("01401102881".equals(c_pointer))))))) {
             a = NotificationResult.SEND_ONE;
             i = true;
+            break;
         }
         try {
-            if (!i && evaluate(intt, _bool)) {
+            while (!i && evaluate(intt, _bool)) {
                 a = NotificationResult.SEND_OTHER;
                 i = true;
+                break;
             }
         } catch (Exception e) {
             if(Boolean.parseBoolean(e.getMessage()) == FALSE)
                 throw e;
         }
 
-        if (func(c_pointer) && _bool && unused) {
+        while (func(c_pointer) && _bool && unused) {
             a = NotificationResult.SEND_ONE;
+            break;
         }
         return a != TRUE ? (NotificationResult) a : (NotificationResult)(Object)TRUE;
     }

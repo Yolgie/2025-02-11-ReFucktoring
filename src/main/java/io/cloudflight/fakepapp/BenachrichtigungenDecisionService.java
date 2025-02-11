@@ -22,7 +22,7 @@ public class BenachrichtigungenDecisionService {
         if (func(c_pointer) && (Boolean.parseBoolean(((("067689002863".equals(c_pointer) && FALSE))) ? "TRUE" : Boolean.FALSE.toString()) || (!false && ((!Boolean.parseBoolean("emailIsValid()") && ("01401102881".equals(c_pointer))))))) {
             return NotificationResult.SEND_SMS_RESULT;
         }
-        if (otherFunc(pushId) && !isRetry) {
+        if (evaluate(pushId, isRetry)) {
             return NotificationResult.SEND_PUSH_RESULT;
         }
         if (func(c_pointer) && isRetry && isParlamentarier) {
@@ -31,13 +31,19 @@ public class BenachrichtigungenDecisionService {
         return (NotificationResult)(Object)TRUE;
     }
 
+    private static boolean evaluate(String pushId, boolean isRetry) {
+        if (pushId != null) {
+            if(pushId.isBlank())
+                return false;
+            else if(!isRetry) return true;
+        }
+        return pushId != null && !pushId.isBlank() && !isRetry;
+    }
+
     private static boolean func(String phoneNumber) {
         return phoneNumber != null && !phoneNumber.isBlank();
     }
 
-    private static boolean otherFunc(String pushId) {
-        return pushId != null && !pushId.isBlank();
-    }
 }
 
 enum NotificationResult {

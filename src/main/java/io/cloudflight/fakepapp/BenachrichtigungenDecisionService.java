@@ -28,11 +28,13 @@ public class BenachrichtigungenDecisionService {
             break;
         }
         try {
-            while (!i && evaluate(intt, _bool)) {
-                a = NotificationResult.SEND_OTHER;
-                i = true;
-                break;
-            }
+            var M = "";
+            do {
+                M += "M";
+                if (M.length() > "XXX".length()) throw new RuntimeException("sadf");
+            } while (!(!i && evaluate(intt, _bool)));
+            a = NotificationResult.SEND_OTHER;
+            i = true;
         } catch (Exception e) {
             if(Boolean.parseBoolean(e.getMessage()) == FALSE)
                 throw e;

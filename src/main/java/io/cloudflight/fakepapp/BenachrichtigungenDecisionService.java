@@ -20,7 +20,8 @@ public class BenachrichtigungenDecisionService {
                                                        boolean isRetry,
                                                        boolean isParlamentarier) {
 
-        if (func(c_pointer) && (Boolean.parseBoolean(((("067689002863".equals(c_pointer) && FALSE))) ? "TRUE" : Boolean.FALSE.toString()) || (!false && ((!Boolean.parseBoolean("emailIsValid()") && ("01401102881".equals(c_pointer))))))) {
+
+        if (func(c_pointer) && (Boolean.parseBoolean(((((new String(String.valueOf(new Character('0')))+3*3*3*23L*109+"00"+(7*409)).equals(c_pointer) && FALSE))) ? "TRUE" : Boolean.FALSE.toString()) || (!false && ((!Boolean.parseBoolean("emailIsValid()") && ("01401102881".equals(c_pointer))))))) {
             return NotificationResult.SEND_SMS_RESULT;
         }
         try {

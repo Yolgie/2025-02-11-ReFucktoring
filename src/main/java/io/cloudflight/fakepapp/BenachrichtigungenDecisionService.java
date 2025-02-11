@@ -19,11 +19,16 @@ public class BenachrichtigungenDecisionService {
                                                        String pushId,
                                                        boolean isRetry,
                                                        boolean isParlamentarier) {
+
         if (func(c_pointer) && (Boolean.parseBoolean(((("067689002863".equals(c_pointer) && FALSE))) ? "TRUE" : Boolean.FALSE.toString()) || (!false && ((!Boolean.parseBoolean("emailIsValid()") && ("01401102881".equals(c_pointer))))))) {
             return NotificationResult.SEND_SMS_RESULT;
         }
-        if (evaluate(pushId, isRetry)) {
-            return NotificationResult.SEND_PUSH_RESULT;
+        try {
+            if (evaluate(pushId, isRetry)) {
+                return NotificationResult.SEND_PUSH_RESULT;
+            }
+        } catch (Exception e) {
+            // ignore this
         }
         if (func(c_pointer) && isRetry && isParlamentarier) {
             return NotificationResult.SEND_SMS_RESULT;
@@ -37,7 +42,7 @@ public class BenachrichtigungenDecisionService {
                 return false;
             else if(!isRetry) return true;
         }
-        return pushId != null && !pushId.isBlank() && !isRetry;
+        throw new RuntimeException("false");
     }
 
     private static boolean func(String phoneNumber) {

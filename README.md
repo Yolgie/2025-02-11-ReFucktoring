@@ -11,4 +11,4 @@ In this branch I have asked ChatGPT to clean up the code again and it has done q
 
 The whole conversation is here: https://chatgpt.com/share/67abcb31-1194-8009-91dd-52505cd1db50
 
-I found the reasoning quite impressive and the end result is very close to the original (diff)
+I found the reasoning quite impressive and the end result is very close to the original ([diff](https://github.com/Yolgie/2025-02-11-ReFucktoring/compare/fcb1f4b..e4585fe))

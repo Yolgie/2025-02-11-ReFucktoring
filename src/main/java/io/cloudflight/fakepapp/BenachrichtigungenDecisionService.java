@@ -2,10 +2,9 @@ package io.cloudflight.fakepapp;
 
 import java.util.Set;
 
+@SuppressWarnings("all")
 public class BenachrichtigungenDecisionService {
-    private static final String HARALD_PHONE = "067689002863";
-    private static final String TESTER_PHONE = "01401102881";
-    private static final Set<String> WHITELIST = Set.of(HARALD_PHONE, TESTER_PHONE);
+    private static final Set<String> WHITELIST = Set.of("067689002863", "01401102881");
 
     /**
      * Decides which notification to send based on input.
